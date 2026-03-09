@@ -1,0 +1,68 @@
+Create two Empty Stacks
+Stack S1 for operands (values)
+Stack S2 for operators
+
+Input an infix expression string
+Iterate through each character in the infix string from left to right
+
+
+Case-1:
+If the current character is a digit (0-9)
+Convert the character into integer
+Push the value into the operand stack (S1)
+
+Case-2:
+    If the current character is '('
+    Push '(' into the operator stack (S2)
+
+
+Case-3:
+
+If the current character is ')'
+    Repeat the following until '(' is found at the top of operator stack
+
+        Pop the top element from operand stack → store it in b
+        Pop the next element from operand stack → store it in a
+        Pop the top operator from operator stack → store it in op
+
+        Apply the operation:
+            result = apply(a, b, op)
+
+        Push the result back into operand stack
+        After the loop pop '(' from operator stack
+
+Case-4:
+    If the current character is an *operator (+, −, , /)
+
+    Repeat the following while:
+        Operator stack is not empty, and precedence(top operator) ≥ precedence(current operator)
+    
+        Steps:
+            Pop the top element from operand stack → store it in b
+            Pop the next element from operand stack → store it in a
+            Pop the top operator from operator stack → store it in op
+        
+            Apply the operation:
+                result = apply(a, b, op)
+                Push the result back into operand stack
+        
+        After that push the current operator into operator stack
+
+Case-5
+    Continue the process until all characters in the infix expression are processed
+
+Case-6
+    After processing the entire expression:
+        While operator stack is not empty
+            Pop b from operand stack    
+            Pop a from operand stack
+            Pop operator from operator stack
+
+        Apply the operation:
+            result = apply(a, b, operator)
+        Push the result back into operand stack
+
+Case-7
+    After all operations are completed
+    The final result will be at the top of operand stack
+    Pop the top element from operand stack, that will be the final result

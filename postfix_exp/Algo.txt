@@ -1,0 +1,24 @@
+Postfix Expression Evaluation Using Stack:
+
+Create an Empty Stack S
+Input a postfix expression string
+Iterate through each character in the postfix string
+
+Case-1
+    If the current character is a digit (0-9)
+    Convert the character into integer
+    Push the value into the Stack
+
+Case-2
+    If the current character is an *operator (+, −, , /)
+    Pop the top element from stack → store it in b
+    Pop the next element from stack → store it in a
+    Apply the operation using the operator:
+        result = apply(a, b, operator)
+    
+    Push the result back into the stack
+
+Case-3
+    Continue the process until all characters in postfix expression are processed
+    After processing all the charecters final result will be in top of stack 
+    Pop the top element from stack that will be the final result.
